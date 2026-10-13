@@ -15,8 +15,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-
-
+/**
+ * Console entry point. Passwords are read with Console.readPassword()
+ * (no echo) when a real terminal is available; users only ever see
+ * clean messages, never stack traces.
+ */
 public final class Main {
 
     private static final Path DATA_DIR = Path.of("data");
@@ -40,7 +43,7 @@ public final class Main {
 
     private void run() {
         System.out.println("=====================================");
-        System.out.println("   TAWANA'S BANK");
+        System.out.println("   SECURE BANKING APPLICATION");
         System.out.println("=====================================");
         while (true) {
             System.out.println();
@@ -180,9 +183,9 @@ public final class Main {
 
     private char[] promptPassword(String label) {
         if (console != null) {
-            return console.readPassword(label); 
+            return console.readPassword(label);   // masked in a real terminal
         }
-        System.out.print(label);                   
+        System.out.print(label);                   // fallback for IDE terminals
         return scanner.nextLine().toCharArray();
     }
 }
