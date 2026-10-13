@@ -7,10 +7,12 @@ import java.time.format.DateTimeFormatter;
 
 
 
-public enum Type {
+
+public final class Transaction {
+
+    public enum Type {
     DEPOSIT, WITHDRAWAL
 }
-public final class Transaction {
 
 private static final DateTimeFormatter FMT = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
